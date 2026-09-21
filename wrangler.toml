@@ -1,0 +1,11 @@
+name = "tres-marketplace"
+compatibility_date = "2024-11-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "tres_marketplace"
+database_id = "7c54195b-9fd9-428b-9803-29e07a8b36f9"
+
+[[r2_buckets]]
+binding = "PRODUCT_MEDIA"
+bucket_name = "tres-product-media"
