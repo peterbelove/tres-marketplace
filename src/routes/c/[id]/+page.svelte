@@ -62,7 +62,9 @@
       <div class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {#each data.products as p}
           <div class="rounded border bg-white p-4">
-            <div class="font-semibold text-slate-900">{p.name}</div>
+            <a class="font-semibold text-slate-900 hover:underline" href={"/p/" + p.id + "/" + p.slug}>
+  {p.name}
+</a>
             <div class="mt-1 text-slate-700">{price(p.price_kobo)}</div>
 
             {#if p.stock_qty > 0}
