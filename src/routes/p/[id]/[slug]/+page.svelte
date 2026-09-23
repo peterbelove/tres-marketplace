@@ -1,4 +1,18 @@
 <script lang="ts">
+  import { cart } from '$lib/stores/cart';
+
+  function addToCart() {
+    if (!data.product) return;
+    cart.add(
+      {
+        id: data.product.id,
+        name: data.product.name,
+        slug: data.product.slug,
+        price_kobo: data.product.price_kobo
+      },
+      1
+    );
+  }
   export let data: {
     product: null | {
       id: number;
@@ -40,6 +54,15 @@
     {:else}
       <p class="mt-2 text-red-700">Out of stock</p>
     {/if}
+    <div class="mt-4">
+      <button
+        class="rounded bg-tresGreen px-4 py-2 font-semibold text-white hover:bg-tresGreenHover disabled:opacity-50"
+        on:click={addToCart}
+        disabled={data.product.stock_qty <= 0}
+      >
+        Add to cart
+      </button>
+    </div>
 
     {#if data.product.description}
       <h2 class="mt-8 text-xl font-semibold">Description</h2>
