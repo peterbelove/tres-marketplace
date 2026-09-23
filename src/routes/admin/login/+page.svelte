@@ -5,7 +5,7 @@
 <div class="p-6 max-w-md mx-auto">
   <h1 class="text-3xl font-bold text-tresNavy">Admin Login</h1>
 
-  <form class="mt-6 grid gap-3" method="POST" action="/api/auth/login">
+  <form class="mt-6 grid gap-3" method="POST" action="/api/auth/login" enctype="multipart/form-data">
     <input type="hidden" name="next" value={data.next} />
 
     <label class="grid gap-1">
