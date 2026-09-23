@@ -17,7 +17,7 @@ export async function hashPassword(password: string, saltB64?: string) {
     {
       name: 'PBKDF2',
       salt,
-      iterations: 120_000,
+      iterations: 100_000,
       hash: 'SHA-256'
     },
     key,
@@ -26,7 +26,7 @@ export async function hashPassword(password: string, saltB64?: string) {
 
   const hash = bytesToBase64(new Uint8Array(bits));
 
-  return `pbkdf2$120000$${bytesToBase64(salt)}$${hash}`;
+  return `pbkdf2$100000$${bytesToBase64(salt)}$${hash}`;
 }
 
 export async function verifyPassword(password: string, stored: string) {
