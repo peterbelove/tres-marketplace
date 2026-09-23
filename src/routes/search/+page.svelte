@@ -1,4 +1,5 @@
 <script lang="ts">
+  import ProductCard from '$lib/ui/ProductCard.svelte';
   export let data: {
     q: string;
     results: Array<{ id: number; name: string; slug: string; price_kobo: number; stock_qty: number }>;
@@ -31,12 +32,11 @@
     {#if data.results.length === 0}
       <p class="mt-3 text-slate-700">No results.</p>
     {:else}
-      <ul class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {#each data.results as p}
-          <li class="rounded border bg-white p-4">
-            <a class="font-semibold hover:underline" href={"/p/" + p.id + "/" + p.slug}>
-              {p.name}
-            </a>
+      <div class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+  {#each data.results as p (p.id)}
+    <ProductCard product={p} />
+  {/each}
+</div>
             <div class="mt-1 text-slate-700">{price(p.price_kobo)}</div>
             {#if p.stock_qty > 0}
               <div class="mt-2 text-sm text-green-700">In stock</div>
